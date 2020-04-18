@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+{% endblock css %}
+
+{% block title %}
+<title>Iniciar Sesión</title>
+{% endblock title %}
+
+{% block content %}
+<section class="section">
+  <form action="{% url 'users:login' %}" method="POST">
+    {% csrf_token %}
+    {% if error %}
+    <div class="notification is-danger is-light">
+      {{ error }}
+    </div>
+    {% endif %}
+
+    <div class="box">
+      <h1 class="title">Inicia sesión</h1>
+      <div class="field">
+        <label class="label">Nombre de usuario:</label>
+        <div class="control">
+          <input class="input" name="username" type="text" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Contraseña:</label>
+        <div class="control">
+          <input class="input" name="password" type="password" required />
+        </div>
+      </div>
+      <div class="buttons is-centered">
+        <button type="submit" class="button is-primary is-light">
+          Iniciar Sesión
+        </button>
+        <a
+          role="button"
+          href="{% url 'index' %}"
+          class="button is-link is-light"
+        >
+          Regresar al inicio
+        </a>
+      </div>
+    </div>
+  </form>
+</section>
+{% endblock content %}

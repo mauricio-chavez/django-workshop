@@ -1,0 +1,21 @@
+div.box {
+  margin: 3% 15% 0;
+  padding: 5%;
+}
+
+div.notification.is-danger.is-light {
+  background: #feecf0 !important;
+  color: #cc0f35 !important;
+}
+
+@media (max-width: 728px) {
+  div.box {
+    margin: 15% 0;
+  }
+}
+
+@media (min-width: 728px) {
+  div.buttons {
+    margin-top: 40px;
+  }
+}

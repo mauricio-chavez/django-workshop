@@ -1,19 +1,31 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css"
-    />
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
-    ></script>
-    <title>GDG UNAM | TODOS</title>
-  </head>
-  <body>
-    {% include '_header.html' %}
-  </body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+{% include '_header.html' %}
+<section class="section">
+  <h1 class="title">
+    ¿Qué quieres hacer?
+  </h1>
+  <div class="buttons">
+    
+    {% if request.user.is_authenticated %}
+    <a role="button" href="{% url 'todos:list' %}" class="button is-primary is-light">
+      Ver TODOs
+    </a>
+    <a role="button" href="{% url 'todos:create' %}" class="button is-link is-light">
+      Crear TODO
+    </a>
+    <a role="button" href="{% url 'users:logout' %}" class="button is-danger is-light">
+      Cerrar Sesión
+    </a>
+    {% else %}
+    <a role="button" href="{% url 'users:login' %}" class="button is-link is-light">
+      Iniciar Sesión
+    </a>
+    {% endif %}
+      
+  </div>
+  </ul>
+</section>
+{% endblock content %}
+  
